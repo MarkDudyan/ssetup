@@ -1,5 +1,8 @@
 #!/bin/bash
-read -p "Создать или удалить SWAPFILE? n/Создать(1)n/Удалить(2)n/: " or 
+read -p "Создать или удалить SWAPFILE?
+Создать(1)
+Удалить(2)
+: " or 
 case $or in
 1) make_swap
 2) delete_swap
