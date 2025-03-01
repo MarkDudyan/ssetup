@@ -11,7 +11,7 @@ else
   echo "Продолжаем настройку SWAP"
 fi
 #Создание SWAP файла
-read "На сколько GB будет создан SWAP файл? Введи цифру: " G
+read -p "На сколько GB будет создан SWAP файл? Введи цифру: " G
 sudo fallocate -l "$G"G /swapfile
 ls -lh /swapfile
 sudo mkswap /swapfile
