@@ -4,8 +4,8 @@ read -p "Создать или удалить SWAPFILE?
 Удалить(2)
 : " or 
 case $or in
-1) make_swap
-2) delete_swap
+1) make_swap ;;
+2) delete_swap ;;
 *) exit
 
 make_swap() {
