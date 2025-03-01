@@ -1,11 +1,18 @@
 #!/bin/bash
+read -p "Создать или удалить SWAPFILE? n/Создать(1)n/Удалить(2)n/: " or 
+case $or in
+1) make_swap
+2) delete_swap
+*) exit
+
+make_swap() {
 #Проверка на наличие информации о свопах
 sudo swapon --show
 free -h
 #Проверка доступного места на жестком диске
 df -h
 read -p "Достаточно места? Если нет, нажмите "n": " answer
-if [ "$answer" = n ] ; then
+if [ $answer = n ] ; then
   exit 0
 else
   echo "Продолжаем настройку SWAP"
@@ -13,6 +20,7 @@ fi
 #Создание SWAP файла
 read -p "На сколько GB будет создан SWAP файл? Введи цифру: " G
 sudo fallocate -l "$G"G /swapfile
+sudo chmod 600 /swapfile
 ls -lh /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
@@ -25,3 +33,11 @@ else
 fi
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+}
+
+delete_swap() {
+sudo swapoff -v /swapfile
+echo "Удали упоминание о файле подкачке из /etc/fstab"
+sudo vim /etc/fstab
+sudo rm /swapfile
+}
