@@ -7,7 +7,7 @@ free -h
 #Проверка доступного места на жестком диске
 df -h
 read -p "Достаточно места? Если нет, нажмите "n": " answer
-if [ $answer = n ] ; then
+if [ "$answer" = n ] ; then
   exit 0
 else
   echo "Продолжаем настройку SWAP"
