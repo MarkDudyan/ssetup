@@ -4,6 +4,10 @@ make_swap() {
 #Проверка на наличие информации о свопах
 sudo swapon --show
 free -h
+if [ -e /swapfile ] ; then
+  echo "Файл swapfile уже создан."
+  exit 0
+fi
 #Проверка доступного места на жестком диске
 df -h
 read -p "Достаточно места? Если нет, нажмите "n": " answer
