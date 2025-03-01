@@ -1,12 +1,4 @@
 #!/bin/bash
-read -p "Создать или удалить SWAPFILE?
-Создать(1)
-Удалить(2)
-: " or 
-case $or in
-1) make_swap ;;
-2) delete_swap ;;
-*) exit
 
 make_swap() {
 #Проверка на наличие информации о свопах
@@ -44,3 +36,13 @@ echo "Удали упоминание о файле подкачке из /etc/f
 sudo vim /etc/fstab
 sudo rm /swapfile
 }
+
+read -p "Создать или удалить SWAPFILE?
+Создать(1)
+Удалить(2)
+: " or 
+case $or in
+  1) make_swap ;;
+  2) delete_swap ;;
+  *) exit
+esac
