@@ -1,6 +1,6 @@
 #!/bin.bash
 
-color_shell_pronpt () {
+PS1_color () {
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
         # We have color support; assume it's compliant with Ecma-48
